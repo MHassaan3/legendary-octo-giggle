@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+      <form action="/login" method="post">
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter your username"
+          required
+        /><br /><br />
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        /><br /><br />
+        <label for="softtype">Select Software Type:</label>
+        <select name="software" id="softtype" required>
+          <option value="none">None</option>
+          <option value="school">School Software</option>
+          <option value="factory">Factory Software</option>
+          <option value="local">Local Software</option>
+        </select>
+        <br /><br />
+        <input id="login-btn" type="submit" value="Login" />
+        <input
+        id="buy-btn"
+          type="button"
+          value="Buy Now"
+          onclick="window.location.href = '/purchase'"
+        />
+      </form>
+    </div>
+  </body>
+</html>
