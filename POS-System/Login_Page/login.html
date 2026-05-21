@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickPOS - Login & Subscription</title>
+    <link rel="stylesheet" href="login_style.css">
+</head>
+<body class="login-body">
+
+    <div class="login-container">
+        <div class="brand-section">
+            <h2>QuickPOS <span class="saas-badge">SaaS</span></h2>
+            <p>Manage your mart, inventory, and sales instantly.</p>
+            
+            <div class="plan-card">
+                <small>Selected Plan</small>
+                <h3>Premium Monthly</h3>
+                <p class="plan-price">Rs. 1,000 <span>/ month</span></p>
+                <ul class="plan-features">
+                    <li>✓ Unlimited Products</li>
+                    <li>✓ Live Sales Dashboard</li>
+                    <li>✓ Smart Inventory Lock</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>Welcome Back</h3>
+            <p class="subtitle">Enter your credentials to access your store</p>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label>Username / Email</label>
+                    <input type="text" id="username" placeholder="e.g. admin" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+
+                <div class="remember-row">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="login-btn">Secure Login</button>
+            </form>
+            
+            <p class="footer-text">Protected by QuickPOS Gatekeeper System</p>
+        </div>
+    </div>
+
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-box">
+            <div id="modalIcon" class="modal-icon"></div>
+            <h3 id="modalTitle">Notification</h3>
+            <p id="modalMessage">Message goes here...</p>
+            <button onclick="closeModal()" class="modal-btn">Okay</button>
+        </div>
+    </div>
+
+    <div id="invoiceReceipt" class="print-receipt">
+    <div class="receipt-header">
+        <h2>QUICKPOS MART</h2>
+        <p>Main Bazar, Gujranwala, Pakistan</p>
+        <p>Phone: 0300-1234567</p>
+        <p class="receipt-divider">--------------------------------</p>
+    </div>
+    
+    <div class="receipt-info">
+        <p><strong>Date:</strong> <span id="receiptDate">12/05/2026</span></p>
+        <p><strong>Cashier:</strong> <span id="receiptCashier">Worker</span></p>
+        <p><strong>Bill No:</strong> #<span id="receiptInvoiceNo">1001</span></p>
+        <p class="receipt-divider">--------------------------------</p>
+    </div>
+
+    <table class="receipt-table">
+        <thead>
+            <tr>
+                <th style="text-align: left;">Item</th>
+                <th>Qty</th>
+                <th style="text-align: right;">Price</th>
+            </tr>
+        </thead>
+        <tbody id="receiptItems">
+            <tr>
+                <td>Cold Drink 1L</td>
+                <td style="text-align: center;">2</td>
+                <td style="text-align: right;">Rs. 240</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="receipt-summary">
+        <p class="receipt-divider">--------------------------------</p>
+        <p>Total Items: <span id="receiptTotalItems">2</span></p>
+        <h3>Grand Total: Rs. <span id="receiptGrandTotal">240</span></h3>
+        <p class="receipt-divider">--------------------------------</p>
+    </div>
+
+    <div class="receipt-footer">
+        <p>Thank You For Shopping!</p>
+        <p>Software Powered by QuickPOS SaaS</p>
+    </div>
+</div>
+
+    <script src="login_script.js"></script>
+</body>
+</html>

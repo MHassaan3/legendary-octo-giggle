@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      if (!localStorage.getItem('currentUserRole')) {
+        window.location.href = 'Login_Page/login.html'
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SaaS POS - Sales Screen</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Main Container jo saari screen ko control karega -->
+    <div class="pos-container">
+      <!-- 1. SIDEBAR (Navigation Options) -->
+      <aside class="sidebar">
+        <div class="logo">
+          <h2>QuickPOS</h2>
+        </div>
+        <nav class="nav-links">
+          <a href="#" class="active">New Sales</a>
+          <a href="#" class="nav-inventory">Inventory</a>
+          <a href="#" class="nav-sales">Sales</a>
+          <a href="#" class="nav-setting">Setting</a>
+          <a href="#" class="nav-logout" onclick="logoutUser()" style="margin-top: auto; color: #ef4444; font-weight: 600;">Logout</a>
+        </nav>
+      </aside>
+
+      <!-- 2. PRODUCT SECTION (Main Center Panel) -->
+      <main class="main-content">
+        <header class="top-bar">
+          <input
+            type="text"
+            placeholder="Search product by name or barcode..."
+          />
+        </header>
+
+        <section
+          class="products-grid"
+          style="
+            display: grid !important;
+            grid-template-columns: repeat(
+              auto-fill,
+              minmax(180px, 1fr)
+            ) !important;
+            gap: 20px;
+          "
+        >
+          <!-- Abhi Sample k liy 3 product cards add kr raha huu -->
+          <div class="product-card">
+            <h3>Cold Drinks</h3>
+            <p class="price">Rs. 120</p>
+          </div>
+          <div class="product-card">
+            <h3>White Bread</h3>
+            <p class="price">Rs. 150</p>
+          </div>
+          <div class="product-card">
+            <h3>Potato Chips</h3>
+            <p class="price">Rs. 60</p>
+          </div>
+        </section>
+      </main>
+
+      <!-- 3. BILLING PANEL(Right Side Panel) -->
+      <section class="billing-panel">
+        <h2>Current Order</h2>
+
+        <!-- Cart item List -->
+        <div class="cart-item">
+          <p style="color: #888; text-align: center; margin-top: 20px">
+            Cart is empty
+          </p>
+        </div>
+
+        <!-- Summary Table -->
+        <div class="bill-summary">
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span>Rs. 0</span>
+          </div>
+          <div class="summary-row font-bold">
+            <span>Total Bill:</span>
+            <span>Rs. 0</span>
+          </div>
+        </div>
+
+        <button class="checkout-btn" onclick="printInvoice()">Checkout & Print</button>
+      </section>
+    </div>
+
+    <div id="securityModal" class="sec-modal-overlay">
+    <div class="sec-modal-box">
+        <div class="sec-modal-icon">🔒</div>
+        <h3>Access Denied!</h3>
+        <p>Aap is page ko direct access nahi kar sakte. Pehle secure login zaroori hai.</p>
+        <button onclick="goToLogin()" class="sec-modal-btn">Go to Login Page</button>
+    </div>
+</div>
+
+<div id="toastNotification" class="toast-box">
+    <span class="toast-icon">✨</span>
+    <span id="toastMessage" class="toast-text">Product Scanned!</span>
+</div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,231 @@
+/* Reset and Base Style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+  background-color: #f4f6f9;
+  color: #333;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 2. Main Container layout (flexbox Magic) */
+.pos-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* 3. Sidebar style */
+.sidebar {
+  width: 250px;
+  background-color: #1e293b;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.logo h2 {
+  font-size: 24px;
+  text-align: center;
+  color: #38bdf8;
+}
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.nav-links a {
+  display: block;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+.nav-links a.active,
+.nav-links a:hover {
+  background-color: #334155;
+  color: #fff;
+}
+
+.nav-logout {
+  border-radius: 12px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 02s ease;
+}
+.nav-logout:hover {
+  background: #fee2e2;
+  padding-left: 25px;
+}
+/* 4. Center Product section */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f8fafc;
+  min-width: 0;
+}
+
+/* Search Bar Container */
+.top-bar input {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  background-color: #fff;
+}
+.top-bar input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 5px rgba(56, 189, 248, 0.3);
+}
+
+/* Product Grid Layout */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  overflow-y: auto;
+}
+
+/* Individual Product card */
+.product-card {
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 5px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-color: #38bdf8;
+}
+
+.product-card h3 {
+  font-size: 18px;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+.product-card .price {
+  font-weight: 600;
+  color: #0284c7;
+}
+
+/* Right side billing panel */
+
+.billing-panel {
+  width: 350px;
+  background-color: #fff;
+  border-left: 1px solid #e2e8f0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.billing-panel h2 {
+  font-size: 20px;
+  color: #1e293b;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+}
+
+/* cart item container  */
+.cart-item {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Bill summary (Subtotal, total) */
+
+.bill-summary {
+  background-color: #f8fafc;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #64748b;
+}
+.font-bold {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 18px;
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 10px;
+}
+
+/* Checkout Button */
+.checkout-btn {
+  width: 100%;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.checkout-btn:hover {
+  background-color: #059669;
+}
+
+/* Toast Notification Main Style */
+.toast-box {
+    position: fixed;
+    bottom: 30px;
+    right: -400px; /* Shuru mein yeh screen se baahir (chhipa) rahega */
+    background: #0f172a; /* Dark sleek premium color */
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Smooth slide animation */
+    z-index: 99999;
+    border-left: 4px solid #22c55e; /* Green success bar on left side */
+}
+
+/* Jab JavaScript is class ko add karegi toh toast screen ke andar slide karega */
+.toast-box.show {
+    right: 30px !important; /* Screen ke andar 30px corner par aa jayega */
+}
+
+.toast-icon {
+    font-size: 20px;
+}
+.toast-text {
+    letter-spacing: 0.3px;
+}
