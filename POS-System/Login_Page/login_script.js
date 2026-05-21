@@ -12,39 +12,6 @@ const USERS_DB = {
     }
 };
 
-// ==========================================
-// 🚨 SAAS SECURITY & ROLE-BASED ACCESS
-// ==========================================
-
-const currentUserRole = localStorage.getItem('currentUserRole');
-
-// Agar koi bina login kiye direct aaya hai
-if (!currentUserRole) {
-    // Window load hote hi hamara custom modal show ho jaye
-    window.addEventListener('DOMContentLoaded', () => {
-        const secModal = document.getElementById('securityModal');
-        if (secModal) {
-            secModal.classList.add('active');
-        }
-    });
-}
-
-// Button par click karne se login page par bhejne ka function
-function goToLogin() {
-    window.location.href = "Login_Page/login.html";
-}
-
-// 2. Sidebar elements ko select karna (Pehle wala same code)
-const inventoryLink = document.querySelector('.nav-inventory');
-const salesReportsLink = document.querySelector('.nav-sales');
-const settingsLink = document.querySelector('.nav-setting');
-
-if (currentUserRole === 'worker') {
-    if(inventoryLink) inventoryLink.style.display = 'none';
-    if(salesReportsLink) salesReportsLink.style.display = 'none';
-    if(settingsLink) settingsLink.style.display = 'none';
-}
-
 // HTML elements select karna
 const loginForm = document.getElementById('loginForm');
 const modal = document.getElementById('customModal');
