@@ -1,0 +1,36 @@
+/* Base Resets */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+body { background-color: #f1f5f9; color: #1e293b; }
+
+.dashboard-container { display: flex; height: 100vh; width: 100vw; }
+
+/* Sidebar Component */
+.sidebar { width: 260px; background: #0f172a; color: white; padding: 24px; display: flex; flex-direction: column; gap: 8px; }
+.brand-logo { font-size: 24px; font-weight: 800; color: #38bdf8; margin-bottom: 30px; }
+.sidebar a { color: #94a3b8; text-decoration: none; padding: 12px 16px; border-radius: 10px; font-weight: 500; transition: all 0.2s; }
+.sidebar a.active, .sidebar a:hover { background: #1e293b; color: white; }
+.nav-logout { margin-top: auto; color: #ef4444 !important; }
+
+/* Main Working Layout */
+.main-content { flex: 1; padding: 30px; display: flex; flex-direction: column; gap: 20px; background-color: #f8fafc; overflow-y: auto;}
+.main-content h2 { font-size: 26px; font-weight: 700; color: #0f172a; }
+
+/* Form Engine Styling */
+.inventory-form { display: flex; gap: 15px; margin-top: 10px; background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+.inventory-form input { background: #f8fafc; border: 1px solid #cbd5e1; color: #0f172a; padding: 12px 16px; border-radius: 10px; flex: 1; font-size: 15px; outline: none; }
+.inventory-form input:focus { border-color: #0284c7; }
+.btn-save { background: #22c55e; color: white; border: none; padding: 12px 24px; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 15px; }
+.btn-save:hover { background: #16a34a; }
+
+/* Premium Table Architecture */
+.table-container { background: white; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); overflow: hidden; }
+.inventory-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 15px; }
+.inventory-table th, .inventory-table td { padding: 16px 20px; border-bottom: 1px solid #e2e8f0; }
+.inventory-table th { background: #f1f5f9; color: #475569; font-weight: 600; }
+.inventory-table td { color: #334155; }
+.btn-delete { background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+.btn-delete:hover { background: #dc2626; }
+
+/* Sleek Notification Toast System */
+.toast-box { position: fixed; bottom: 30px; right: -450px; background: #0f172a; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 12px; font-weight: 600; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 99999; border-left: 5px solid #22c55e; }
+.toast-box.show { right: 30px; }

@@ -1,18 +1,16 @@
 // ==========================================
-// 🚨 SAAS SECURITY & ROLE-BASED ACCESS
-// ==========================================
-
-// ==========================================
 // 🚨 SIDEBAR ROLE-BASED ACCESS CONTROL
 // ==========================================
-window.addEventListener('DOMContentLoaded', () => {
-    const currentUserRole = localStorage.getItem('currentUserRole');
-    
-    const inventoryLink = document.querySelector('.nav-inventory');
-    const salesReportsLink = document.querySelector('.nav-sales-reports');
-    const settingsLink = document.querySelector('.nav-settings');
 
-    // Agar worker hai toh options hide karo
+// Global variable declare karna taa ke line 33 ya baqi poori file mein kahin bhi error na aaye
+const currentUserRole = localStorage.getItem('currentUserRole') || 'worker'; 
+
+window.addEventListener('DOMContentLoaded', () => {
+    const inventoryLink = document.querySelector('.nav-inventory');
+    const salesReportsLink = document.querySelector('.nav-sales');
+    const settingsLink = document.querySelector('.nav-setting');
+
+    // Agar login user worker hai toh links hide karo
     if (currentUserRole === 'worker') {
         if (inventoryLink) inventoryLink.style.display = 'none';
         if (salesReportsLink) salesReportsLink.style.display = 'none';
@@ -20,10 +18,11 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Button par click karne se login page par bhejne ka function
-// function goToLogin() {
-//     window.location.href = "Login_Page/login.html";
-// }
+function logoutUser() {
+    localStorage.removeItem('currentUserRole');
+    window.location.replace("Login_Page/login.html");
+}
+
 
 // 2. Sidebar elements ko select karna (Pehle wala same code)
 const inventoryLink = document.querySelector('.nav-inventory');
@@ -223,7 +222,33 @@ function showToast(message) {
 }
 
 // Data output action dispatcher
+// function handleScannedBarcode(barcode) {
+//     console.log("🎯 Successfully Scanned Barcode: " + barcode);
+//     showToast(`🎉 Barcode Scanned: ${barcode}`);
+// }
+
+// ==========================================
+// 🛒 LIVE LOCALSTORAGE BARCODE TO CART ENGINE
+// ==========================================
+
 function handleScannedBarcode(barcode) {
-    console.log("🎯 Successfully Scanned Barcode: " + barcode);
-    showToast(`🎉 Barcode Scanned: ${barcode}`);
+    console.log("🎯 Scanning Barcode from Live Storage: " + barcode);
+    
+    // 1. LocalStorage se fresh products database uthain (jo inventory page se save kiya tha)
+    const liveProductsDatabase = JSON.parse(localStorage.getItem('pos_products')) || [];
+
+    // 2. Scan huye barcode ko database ke andar dhoondain
+    const matchedProduct = liveProductsDatabase.find(product => product.barcode === barcode);
+
+    if (matchedProduct) {
+        // 3. Agar product mil gaya, toh aap ke sales cart array wale function ko trigger karein
+        // Yeh function automatic item ko right panel wale cart mein phenk dega aur bill total karega
+        addItemToCart(matchedProduct.name, matchedProduct.price);
+        
+        // Screen par automatic popup confirmation dikhain
+        showToast(`🛒 Added: ${matchedProduct.name} (Rs. ${matchedProduct.price})`);
+    } else {
+        // 4. Agar barcode data storage mein nahi mila (Khasosat: Agar product inventory mein add na ho)
+        showToast(`❌ Not Found in Inventory: ${barcode}`);
+    }
 }

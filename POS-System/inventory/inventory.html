@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (!localStorage.getItem('currentUserRole')) {
+            window.location.replace("../login.html"); // Ek folder peeche login par bheja
+        }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickPOS - Inventory Management</title>
+    <link rel="stylesheet" href="inventory.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <h2 class="brand-logo">QuickPOS</h2>
+            <a href="../index.html" class="nav-sales-screen">⬅️ Back to Sales</a>
+            <a href="#" class="nav-inventory active">Inventory</a>
+            <a href="#" class="nav-logout" onclick="logoutUser()">Logout 🚪</a>
+        </div>
+
+        <div class="main-content">
+            <h2>📦 Inventory Management Database</h2>
+            <p>Add products here to save them permanently into LocalStorage.</p>
+
+            <form id="productForm" class="inventory-form">
+                <input type="text" id="prodBarcode" placeholder="Barcode Number (e.g., 324)" required>
+                <input type="text" id="prodName" placeholder="Product Name (e.g., Cold Drinks)" required>
+                <input type="number" id="prodPrice" placeholder="Price (Rs.)" required>
+                <button type="submit" class="btn-save">💾 Save Product</button>
+            </form>
+
+            <div class="table-container">
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Barcode</th>
+                            <th>Product Name</th>
+                            <th>Price (Rs.)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventoryTableBody">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastNotification" class="toast-box">
+        <span class="toast-icon">✨</span>
+        <span id="toastMessage" class="toast-text">Action Successful!</span>
+    </div>
+
+    <script src="inventory.js"></script>
+</body>
+</html>
